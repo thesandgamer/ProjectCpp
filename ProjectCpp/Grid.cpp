@@ -62,9 +62,13 @@ void Grid::AddTileInGrid(Vector2 pos)
     if (tileMaps.empty()) { TraceLog(LOG_DEBUG, "Tilemap not found "); }
     //Check si là où on veut poserest dans la taille de la grid
     //if ( (pos.y > grid[0].size() && pos.y > 0 ) && (pos.y > grid[0].size() && pos.y > 0) )
-    grid[pos.x][pos.y] = new Tile( Vector2{ pos.x, pos.y },  Vector2{ (float)cellWidth,(float)cellHeight });
-    grid[pos.x][pos.y]->gridAnchorStartPos = startPos;
-    CheckAndReplaceAroundTile(pos);
+    if (!grid.empty())
+    {
+        grid[pos.x][pos.y] = new Tile(Vector2{ pos.x, pos.y }, Vector2{ (float)cellWidth,(float)cellHeight });
+        grid[pos.x][pos.y]->gridAnchorStartPos = startPos;
+        CheckAndReplaceAroundTile(pos);
+    }
+
 }
 
 void Grid::RemoveTileInGrid(Vector2 pos)
