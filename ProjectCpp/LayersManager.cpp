@@ -27,7 +27,7 @@ void LayersManager::AddLayer()
 
 void LayersManager::RemoveLayer()
 {
-	//layers[actualLayer - 1].RemoveButton();
+	layers[actualLayer - 1].RemoveButton();
 	layers[actualLayer - 1].~Layer();
 	actualLayer--;
 	layerNumber--;
