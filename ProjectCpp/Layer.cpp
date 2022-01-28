@@ -14,6 +14,8 @@ Layer::Layer(LayerType type, bool useAutoTiling): layerType(type),layerUseAutoTi
 
 Layer::~Layer()
 {
+	buttonLayer->~Button();
+	grid.~Grid();
 }
 
 void Layer::AddTile(Vector2 tilePos)
@@ -59,11 +61,11 @@ void Layer::AddButton(Vector2 pos)
 	buttonLayer = new Button(pos, 100, 50);
 }
 
-Button& Layer::GetButton()
+Button* Layer::GetButton()
 {
 	if (buttonLayer != nullptr)
 	{
-		return *buttonLayer;
+		return buttonLayer;
 	}
 }
 

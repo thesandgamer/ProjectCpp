@@ -9,7 +9,7 @@ Tile::Tile(Vector2 posP, Vector2 sizeP, Texture2D* spriteP): pos(posP),size(size
 	valueForTest = 0;
 }
 
-Tile::Tile(Vector2 posP, Vector2 sizeP): pos(posP), size(sizeP)
+Tile::Tile(Vector2 posP, Vector2 sizeP): pos(posP), size(sizeP), sprite(nullptr)
 {
 }
 
@@ -23,7 +23,7 @@ void Tile::Update()
 
 void Tile::Draw()
 {
-	if (sprite != nullptr)
+	if (sprite == nullptr)
 	{
 		DrawRectangle(gridAnchorStartPos.x + (pos.x * size.x), gridAnchorStartPos.y+(pos.y * size.y), 
 			size.x, size.y,PURPLE);

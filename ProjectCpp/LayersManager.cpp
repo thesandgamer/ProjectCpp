@@ -17,8 +17,8 @@ void LayersManager::AddLayer()
 
 
 	This->actualLayer++;
-	newLayer.GetButton().functPrtInt = &LayersManager::SelectLayer;
-	newLayer.GetButton().value = This->actualLayer;
+	newLayer.GetButton()->functPrtInt = &LayersManager::SelectLayer;
+	newLayer.GetButton()->value = This->actualLayer;
 
 	This->layers.push_back(newLayer);
 	This->GoToLayer(This->actualLayer);
@@ -28,8 +28,10 @@ void LayersManager::AddLayer()
 
 void LayersManager::RemoveLayer()
 {
-	layers[actualLayer - 1].RemoveButton();
+	//layers[actualLayer - 1].RemoveButton();
+	layers[actualLayer - 1].~Layer();
 	actualLayer--;
+	layerNumber--;
 	GoToLayer(actualLayer);
 }
 
@@ -84,13 +86,12 @@ void LayersManager::Update()
 {
 	for (Layer layer : layers)
 	{
-		/*
+		
 		if (layer.GetButton() != nullptr) //Check si le boutton existe
 		{
+			layer.GetButton()->Update();
 
-		}*/
-		layer.GetButton().Update();
-
+		}
 
 		layer.Update();
 	}
@@ -100,7 +101,10 @@ void LayersManager::Draw()
 {
 	for (Layer layer : layers)
 	{
-		layer.GetButton().Draw();
+		if (layer.GetButton() != nullptr) //Check si le boutton existe
+		{
+			layer.GetButton()->Draw();
+		}
 
 		layer.Draw();
 	}

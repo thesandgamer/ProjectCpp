@@ -25,25 +25,28 @@ void Grid::AddTilemap(Texture2D sprite)
 
 void Grid::Draw()
 {
-
-    //Draw les tiles présentes
-    for (int i = 0; i < nbOfTilesWidth;i++ )
+    if (!grid.empty())
     {
-        for (int j = 0; j < nbOfTilesHeight; j++)
-        {         
-            if (grid[i][j] != nullptr)
+        //Draw les tiles présentes
+        for (int i = 0; i < nbOfTilesWidth; i++)
+        {
+            for (int j = 0; j < nbOfTilesHeight; j++)
             {
-               grid[i][j]->Draw();
+                if (grid[i][j] != nullptr)
+                {
+                    grid[i][j]->Draw();
 
-            }   
-            else
-            {
-               Rectangle rec = Rectangle{ startPos.x + (float)i * cellWidth, startPos.y + (float)j * cellHeight,
-                   (float)cellWidth, (float)cellHeight };
-               DrawRectangleLinesEx(rec,1, WHITE);
+                }
+                else
+                {
+                    Rectangle rec = Rectangle{ startPos.x + (float)i * cellWidth, startPos.y + (float)j * cellHeight,
+                        (float)cellWidth, (float)cellHeight };
+                    DrawRectangleLinesEx(rec, 1, WHITE);
+                }
             }
         }
     }
+
 }
 
 void Grid::Update()

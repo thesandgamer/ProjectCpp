@@ -32,7 +32,7 @@ public:
 	void CreateGrid(int width, int height);
 
 	void AddButton(Vector2 pos);
-	Button& GetButton();
+	Button* GetButton();
 
 	void RemoveButton();
 
