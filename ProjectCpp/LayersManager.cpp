@@ -13,9 +13,8 @@ void LayersManager::AddLayer()
 
 	Layer newLayer = Layer(Layer::LayerType::Tiles, true);
 	newLayer.CreateGrid(960, 540); //Il faudra créer une grille de la taille de la room
+
 	newLayer.AddButton(Vector2{ 100, 20.0f + (layerNumber*10 ) + (50 * layerNumber) });
-
-
 	This->actualLayer++;
 	newLayer.GetButton()->functPrtInt = &LayersManager::SelectLayer;
 	newLayer.GetButton()->value = This->actualLayer;

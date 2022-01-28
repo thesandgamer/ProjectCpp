@@ -14,8 +14,8 @@ Layer::Layer(LayerType type, bool useAutoTiling): layerType(type),layerUseAutoTi
 
 Layer::~Layer()
 {
-	buttonLayer->~Button();
-	grid.~Grid();
+	//buttonLayer->~Button();
+	//grid.~Grid();
 }
 
 void Layer::AddTile(Vector2 tilePos)
